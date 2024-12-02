@@ -1,0 +1,79 @@
+" My vimrc file
+"
+
+" GENERAL ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+" set encoding
+set encoding=utf-8
+set fileencoding=utf-8
+
+" Turn on syntax highlighting
+syntax on
+"syntax enable
+
+" set custom colors
+highlight Comment ctermfg=DarkGrey
+highlight Normal ctermfg=White ctermbg=Black
+highlight Statement ctermfg=LightRed
+highlight PreProc ctermfg=DarkRed
+highlight Identifier ctermfg=Cyan
+highlight Type ctermfg=Cyan
+highlight Constant ctermfg=White
+highlight Statusline ctermbg=DarkMagenta ctermfg=White
+
+" fix backspace
+set backspace=indent,eol,start
+
+" stats
+set ruler
+
+" Whitespace, tabs, and line width ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+set wrap
+set textwidth=80
+set colorcolumn=81 "marks where the col limit is
+highlight ColorColumn ctermbg=DarkMagenta
+" to force lines to obey column limit, say when copying in text from a pdf:
+" use the command gqG : this formats the rest of the document according to the
+" settings in this section
+
+set tabstop=8     "width of tab
+set shiftwidth=8  "size of tab for autoindent
+set softtabstop=8 "makes backspace move tab size
+
+"set autoindent    "use indent from prev line for nl
+set smartindent   "indent after {
+
+" Status line ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+set laststatus=2  "always show status line
+"set statusline=\ %f%m%r%h\%w\ \ \ \ Line:\%l\ \ Col:\ %c
+set statusline=%t          "filename
+set statusline+=\ %y       "filetype
+set statusline+=[%{&fileencoding?&fileencoding:&encoding}]
+set statusline+=\ %m
+set statusline+=%=[%l/%L]  "line / total lines
+set statusline+=[%c]       "curr column
+"NOTE: to instert a space, use \_ where _ is [space]
+
+" color and style of line nos
+set number
+set cursorline            "mark current line
+set cursorlineopt=number  "only highlight number
+highlight LineNr term=bold cterm=NONE ctermfg=DarkMagenta ctermbg=White
+highlight CursorLineNr term=bold cterm=NONE ctermfg=White ctermbg=DarkMagenta
+
+"highlight LineNr term=bold cterm=NONE ctermfg=White ctermbg=Magenta
+"highlight CursorLineNr term=bold cterm=NONE ctermfg=Black ctermbg=White
+" SPECIAL SETTINGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" setting to remove newline break when copying from a PDF
+map <leader>xx :let @* = substitute(@*, "\n", " ", "g")<CR>"*p
+
+" Plugins (managed using vim-plug: junegunn/vim-plug)
+call plug#begin()
+Plug 'ghifarit53/tokyonight-vim'
+call plug#end()
+
+set termguicolors
+
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_disable_italic_comment = 1
+
+colorscheme tokyonight

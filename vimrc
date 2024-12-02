@@ -5,6 +5,7 @@ set number
 set termguicolors
 set colorcolumn=81,82,91,101
 set autoindent smartindent
+set cursorline "mark current line
 
 " disable auto-insertion of comment leaders
 set formatoptions-=r " ENTER/<CR>
@@ -14,7 +15,8 @@ set formatoptions-=o " O
 set shiftwidth=8 tabstop=8 softtabstop=8
 set noexpandtab
 
-" AUTOINSTALL Vim-Plug UNTESTED
+" AUTOINSTALL Vim-Plug
+" Uncomment & run to install, then comment out
 "let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 "if empty(glob(data_dir . '/autoload/plug.vim'))
 "  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
